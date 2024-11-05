@@ -146,6 +146,35 @@ return {
           -- Add additional filetypes
           vim.list_extend(opts.filetypes, opts.filetypes_include or {})
         end,
+
+        -- Configuração para SonarLint
+        -- sonarlint = function(_, opts)
+        --   opts.cmd = {
+        --     "sonarlint-language-server",
+        --     -- Certifique-se de que o sonarlint-language-server usa o canal stdio
+        --     "-stdio",
+        --     "-analyzers",
+        --     -- Caminhos para os analisadores necessários
+        --     vim.fn.expand("~/.local/share/nvim/mason/share/sonarlint-analyzers/sonarjs.jar"), -- JS/TS
+        --     vim.fn.expand("~/.local/share/nvim/mason/share/sonarlint-analyzers/sonarhtml.jar"), -- HTML
+        --     vim.fn.expand("~/.local/share/nvim/mason/share/sonarlint-analyzers/sonarcss.jar"), -- CSS
+        --   }
+        --
+        --   opts.filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "html", "css" }
+        --   opts.settings = {
+        --     sonarlint = {
+        --       lint = true,
+        --       server = {
+        --         connection = {
+        --           organizationKey = "hyperlocal-tech",
+        --           token = "1934ff5574d3b6c0a3f4ad20eea8cf619cbfac67",
+        --         },
+        --       },
+        --     },
+        --   }
+        --   require("sonarlint").setup({ server = opts })
+        --   return true
+        -- end,
       },
     },
   },
