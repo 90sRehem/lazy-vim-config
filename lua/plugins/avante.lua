@@ -4,6 +4,14 @@ return {
   lazy = false,
   version = false, -- set this if you want to always pull the latest change
   opts = {
+    provider = "copilot",
+    copilot = {
+      auth = {
+        -- Replace with your Copilot Pro subscription token
+        token = "",
+      },
+    },
+
     -- add any opts here
     mappings = {
       ask = "<leader>ua", -- ask
