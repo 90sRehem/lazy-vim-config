@@ -22,6 +22,12 @@ return {
         { "<leader>op", "<cmd>ObsidianPasteImg<CR>", desc = "Colar imagem" },
         { "<leader>or", "<cmd>ObsidianRename<CR>", desc = "Renomear nota" },
         { "<leader>ox", "<cmd>ObsidianExtractNote<CR>", desc = "Extrair texto para nova nota" },
+        { "<leader>orc", "<cmd>ObsidianRename <C-r><C-w><CR>", desc = "Renomear referência sob o cursor" },
+        { "<leader>ord", "<cmd>ObsidianRename <C-r><C-w> --dry-run<CR>", desc = "Simular renomeação de referência" },
+        { "<leader>oc", "<cmd>ObsidianToggleCheckbox<CR>", desc = "Alternar checkbox" },
+        { "<leader>oT", "<cmd>ObsidianNewFromTemplate<CR>", desc = "Criar nova nota a partir de um template" },
+        { "<leader>otc", "<cmd>ObsidianTOC<CR>", desc = "Gerar tabela de conteúdos" },
+        { "<leader>ow", "<cmd>ObsidianWorkspace<CR>", desc = "Alternar workspace" },
       },
     },
     window = {

@@ -7,7 +7,7 @@ return {
     curl_path = "curl",
 
     -- Display mode, possible values: "split", "float"
-    display_mode = "split",
+    display_mode = "float",
 
     -- q to close the float (only used when display_mode is set to "float")
     -- possible values: true, false
@@ -81,7 +81,7 @@ return {
     },
 
     -- enable winbar
-    winbar = false,
+    winbar = true,
 
     -- Specify the panes to be displayed by default
     -- Current available pane contains { "body", "headers", "headers_body", "script_output", "stats" },
@@ -114,6 +114,17 @@ return {
   -- or override default keymaps as shown in the example below.
   ---@type boolean|table
   global_keymaps = false,
+  keys = {
+    {
+      "<leader>Re",
+      function()
+        require("kulala").set_selected_env()
+      end,
+      desc = "Selecionar Ambiente", -- Isso aparece no which-key
+      mode = "n",
+      ft = "http", -- só ativa em arquivos `.http`
+    },
+  },
   --[[
     {
       ["Send request"] = { -- sets global mapping
