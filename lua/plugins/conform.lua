@@ -5,6 +5,11 @@ return {
       ["yaml"] = { "yamlfix" },
       ["markdown"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
       ["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
+      ["sql"] = { "sqlfluff" },
+      ["mysql"] = { "sqlfluff" },
+      ["plsql"] = { "sqlfluff" },
+      ["postgres"] = { "sqlfluff" },
+      -- adicione outros filetypes de SQL se necessário
     },
     formatters = {
       ["markdown-toc"] = {
@@ -23,6 +28,9 @@ return {
           end, vim.diagnostic.get(ctx.buf))
           return #diag > 0
         end,
+      },
+      ["sqlfluff"] = {
+        args = { "format", "--dialect=ansi", "-" }, -- altere o dialect conforme seu banco (ansi, postgres, etc)
       },
     },
   },
