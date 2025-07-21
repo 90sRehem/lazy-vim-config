@@ -1,33 +1,45 @@
 return {
   "yetone/avante.nvim",
   event = "VeryLazy",
-  lazy = false,
-  version = false, -- set this if you want to always pull the latest change
+  version = false, -- Never set this value to "*"! Never!
+  enabled = false,
   opts = {
-    provider = "copilot",
-    copilot = {
-      auth = {
-        -- Replace with your Copilot Pro subscription token
-        token = "",
-      },
-    },
-
     -- add any opts here
-    mappings = {
-      ask = "<leader>ua", -- ask
-      edit = "<leader>ue", -- edit
-      refresh = "<leader>ur", -- refresh
+    -- for example
+    provider = "copilot",
+    providers = {
+      copilot = {
+        auth = {
+          -- Replace with your Copilot Pro subscription token
+          token = "",
+        },
+      },
+      openai = {
+        endpoint = "https://api.openai.com/v1",
+        model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+        extra_request_body = {
+          timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+          temperature = 0.75,
+          max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
+          --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+        },
+      },
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  build = "make BUILD_FROM_SOURCE=true",
+  build = "make",
   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
-    "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
     --- The below dependencies are optional,
+    "echasnovski/mini.pick", -- for file_selector provider mini.pick
+    "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+    "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+    "ibhagwan/fzf-lua", -- for file_selector provider fzf
+    "stevearc/dressing.nvim", -- for input provider dressing
+    "folke/snacks.nvim", -- for input provider snacks
     "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
     "zbirenbaum/copilot.lua", -- for providers='copilot'
     {
