@@ -27,9 +27,10 @@ return {
         name = "personal",
         path = "~/Documentos/obsidian",
       },
+
       {
-        name = "work",
-        path = "~/Documentos/hyperlocal/obsidian",
+        name = "hyperlocal-notes",
+        path = "~/Documentos/hyperlocal-notes",
       },
     },
     notes_subdir = "notes",

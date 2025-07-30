@@ -1,8 +1,32 @@
 return {
   "neovim/nvim-lspconfig",
+  init = function()
+    -- Define o caminho do Node.js para todos os servidores LSP
+    local node_path = "/home/rehem/.local/share/mise/installs/node/22.17.1/bin/node"
+    vim.g.node_host_prog = node_path
+    
+    -- Adiciona o diretório do Node.js ao PATH
+    local env_path = vim.env.PATH
+    if not string.find(env_path, "/home/rehem/.local/share/mise/installs/node/22.17.1/bin") then
+      vim.env.PATH = "/home/rehem/.local/share/mise/installs/node/22.17.1/bin:" .. env_path
+    end
+  end,
   opts = {
     servers = {
-      eslint = {},
+      eslint = {
+        settings = {
+          workingDirectories = { mode = "auto" },
+          format = { enable = true },
+          lint = { enable = true },
+        },
+        on_attach = function(client, bufnr)
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+          })
+        end,
+      },
+      tsserver = {},
       tailwindcss = {},
       marksman = {},
       dockerls = {},
